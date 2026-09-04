@@ -92,10 +92,17 @@ class BloodRequest(models.Model):
     is_verified = models.BooleanField(default=False)
 
     status = models.CharField(
-        max_length=20,
-        choices=[('Pending', 'Pending'), ('Fulfilled', 'Fulfilled'), ('Expired', 'Expired')],
-        default='Pending'
-    )
+    max_length=30,
+    choices=[
+        ('Pending', 'Pending'),
+        ('Verified', 'Verified'),
+        ('Pending_Human', 'Pending Human Review'),
+        ('Rejected', 'Rejected'),
+        ('Fulfilled', 'Fulfilled'),
+        ('Expired', 'Expired'),
+    ],
+    default='Pending'
+)
     created_at = models.DateTimeField(auto_now_add=True)
     expires_at = models.DateTimeField()
     is_active = models.BooleanField(default=True)
